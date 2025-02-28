@@ -988,9 +988,11 @@ class BrowserContext:
 				"""Performs the actual click, handling both download
 				and navigation scenarios."""
 				if self.config.save_downloads_path:
+					logger.debug("ES UNA DESCARGA")
 					try:
 						# Try short-timeout expect_download to detect a file download has been been triggered
 						async with page.expect_download(timeout=5000) as download_info:
+							logger.info("Descarga detectada") 
 							await click_func()
 						download = await download_info.value
 						# Determine file path
@@ -1003,10 +1005,12 @@ class BrowserContext:
 					except TimeoutError:
 						# If no download is triggered, treat as normal click
 						logger.debug('No download triggered within timeout. Checking navigation...')
+						logger.info("Esperando navegación después del clic")
 						await page.wait_for_load_state()
 						await self._check_and_handle_navigation(page)
 				else:
 					# Standard click logic if no download is expected
+					logger.info("Click normal, NO ES UNA DESCARGA")
 					await click_func()
 					await page.wait_for_load_state()
 					await self._check_and_handle_navigation(page)

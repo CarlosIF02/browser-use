@@ -126,6 +126,7 @@ def setup_logging():
 		'PIL.PngImagePlugin',
 		'trafilatura.htmlprocessing',
 		'trafilatura',
+		'message_manager',
 	]:
 		third_party = logging.getLogger(logger)
 		third_party.setLevel(logging.ERROR)
