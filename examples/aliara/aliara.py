@@ -29,6 +29,8 @@ llm = AzureChatOpenAI(
 
 # Tarea a ejecutar
 task = """
+Acepta las cookies siempre como primer paso.
+
 Entra en https://ov.aliaraenergia.es/login?
 
 Tienes que utilizar las credenciales siguientes:
@@ -37,7 +39,7 @@ Tienes que utilizar las credenciales siguientes:
 
 Como el primer paso acepta las cookies de Google, tienes que aceptarlas todas.
 
-1. Quiero saber la URL de descarga de mis movimientos.
+Descarga el excel de mis movimientos 
 """
 
 # Modelo Pydantic para la salida
